@@ -39,6 +39,7 @@ function GetWeatherData(lattitude, longtitude) {
                 let unixTimestamp = dat.current.dt;
                 let milliseconds = unixTimestamp * 1000;
                 let dateObject = new Date(milliseconds);
+
                 let monthDayYearDate = dateObject.toLocaleDateString();
                 let dayDate = dateObject.toLocaleDateString("en-US", {weekday: "long"});
 
@@ -47,14 +48,14 @@ function GetWeatherData(lattitude, longtitude) {
                 let currentTempMin = Math.round(dat.daily[0].temp.min - 273);
                 let currentTempMax = Math.round(dat.daily[0].temp.max - 273);
 
-                console.log(`Current Temperature: ${currentTemp}° C`);
-                console.log(`Temperature Min: ${currentTempMin}° C`);
-                console.log(`Temperature Max: ${currentTempMax}° C`);
-                console.log(`Weather condition: ${dat.current.weather[0].description}`);
-                console.log(`Humidity: ${dat.current.humidity}%`);
-                console.log(`Wind Speed: ${Math.round(dat.current.wind_speed * 3.6)} km/h`);
-                console.log(`Current Day: ${dayDate}`);
-                console.log(`Date: ${monthDayYearDate}`);
+                // console.log(`Current Temperature: ${currentTemp}° C`);
+                // console.log(`Temperature Min: ${currentTempMin}° C`);
+                // console.log(`Temperature Max: ${currentTempMax}° C`);
+                // console.log(`Weather condition: ${dat.current.weather[0].description}`);
+                // console.log(`Humidity: ${dat.current.humidity}%`);
+                // console.log(`Wind Speed: ${Math.round(dat.current.wind_speed * 3.6)} km/h`);
+                // console.log(`Current Day: ${dayDate}`);
+                // console.log(`Date: ${monthDayYearDate}`);
 
                 //Adds current day info from api into object
                 cityInfoArray.push(
@@ -84,14 +85,14 @@ function GetWeatherData(lattitude, longtitude) {
                 let tempMin = Math.round(dat.daily[i].temp.min - 273);
                 let tempMax = Math.round(dat.daily[i].temp.max - 273);
 
-                console.log(`Temperature: ${temp}° C`);
-                console.log(`Temperature Min: ${tempMin}° C`);
-                console.log(`Temperature Max: ${tempMax}° C`);
-                console.log(`Weather condition: ${dat.daily[i].weather[0].description}`);
-                console.log(`Humidity: ${dat.daily[i].humidity}%`);
-                console.log(`Wind Speed: ${Math.round(dat.daily[i].wind_speed * 3.6)} km/h`);
-                console.log(`Current Day: ${dayDate}`);
-                console.log(`Date: ${monthDayYearDate}`);
+                // console.log(`Temperature: ${temp}° C`);
+                // console.log(`Temperature Min: ${tempMin}° C`);
+                // console.log(`Temperature Max: ${tempMax}° C`);
+                // console.log(`Weather condition: ${dat.daily[i].weather[0].description}`);
+                // console.log(`Humidity: ${dat.daily[i].humidity}%`);
+                // console.log(`Wind Speed: ${Math.round(dat.daily[i].wind_speed * 3.6)} km/h`);
+                // console.log(`Current Day: ${dayDate}`);
+                // console.log(`Date: ${monthDayYearDate}`);
 
 
                 //Adds Api information to object
