@@ -77,22 +77,11 @@ function GetWeatherData(lattitude, longtitude) {
 
             }
             console.log('');
-            
-            
-            
-
-            // console.log(`Temperature of the day ${Math.round(tempDay)}° C`);            //Current temperature
-            // console.log(`Temperature min of the day ${Math.round(tempMin)}° C`);        //Minimum Temperature
-            // console.log(`Temperature max of the day ${Math.round(tempMax)}° C`);        //Maximum Temperature
-            // console.log(`Weather condition: ${dat.daily[i].weather[0].description}`);   //Weather condition
-            // console.log(`Wind: ${Math.round(dat.daily[i].wind_speed * 2.236936)} mph`); //Wind Speed
-            // console.log(`Date: ${humanDateFormat}`);                                    //Date
-            // console.log('');
 
             
         }
         
-    })
+    });
 }
 
 GetLatLong();
