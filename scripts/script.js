@@ -1,3 +1,4 @@
+import DataToWebsite from "../scripts/DoNotKnow.js"
 
 let lat;
 let lon;
@@ -27,6 +28,9 @@ function GetWeatherData(lattitude, longtitude) {
     .then(response => response.json())
     .then(dat => {
         
+        const cityInfoArray = [
+            
+        ]
         
 
         for (let i = 0; i < 6; i++) {
@@ -51,6 +55,20 @@ function GetWeatherData(lattitude, longtitude) {
                 console.log(`Wind Speed: ${Math.round(dat.current.wind_speed * 3.6)} km/h`);
                 console.log(`Current Day: ${dayDate}`);
                 console.log(`Date: ${monthDayYearDate}`);
+
+                //Adds current day info from api into object
+                cityInfoArray.push(
+                    {
+                        currentTemp: currentTemp,
+                        minTemp: currentTempMin,
+                        maxTemp: currentTempMax,
+                        weather: dat.current.weather[0].description,
+                        humidity: dat.current.humidity,
+                        windSpeed: Math.round(dat.current.wind_speed * 3.6),
+                        day: dayDate,
+                        date: monthDayYearDate
+                    }
+                )
                 
             }
             else {
@@ -75,11 +93,28 @@ function GetWeatherData(lattitude, longtitude) {
                 console.log(`Current Day: ${dayDate}`);
                 console.log(`Date: ${monthDayYearDate}`);
 
+
+                //Adds Api information to object
+                cityInfoArray.push(
+                    {
+                        currentTemp: temp,
+                        minTemp: tempMin,
+                        maxTemp: tempMax,
+                        weather: dat.daily[i].weather[0].description,
+                        humidity: dat.daily[i].humidity,
+                        windSpeed: Math.round(dat.daily[i].wind_speed * 3.6),
+                        day: dayDate,
+                        date: monthDayYearDate
+                    }
+                )
+
             }
             console.log('');
 
-            
         }
+
+        DataToWebsite(cityInfoArray);
+        
         
     });
 }
