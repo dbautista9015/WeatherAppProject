@@ -2,15 +2,33 @@ import DataToWebsite from "../scripts/DoNotKnow.js"
 
 let lat;
 let lon;
+let cityName;
+let displayCity = document.getElementById('displayCity');
 
-function GetLatLong() {
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stockton&APPID=8903d3033bcdc5adc4484ce6f5201cfd")
+let inputField = document.getElementById('inputField');
+let button = document.getElementById('button-addon2');
+
+
+function GetLatLong(town) {
+
+
+   
+
+
+
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${town}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
     .then(res => res.json())
     .then(data => {
         // console.log(`Latitude: ${data.city.coord.lat}`);
         // console.log(`Longtitude: ${data.city.coord.lon}`);
         // Latitude: 37.9577
         // Longtitude: -121.2908
+
+        //Display City Name
+        displayCity.textContent = town;
+
+        
 
         lat = data.city.coord.lat;
         lon = data.city.coord.lon;
@@ -120,7 +138,17 @@ function GetWeatherData(lattitude, longtitude) {
     });
 }
 
-GetLatLong();
+button.addEventListener('click', function(e) {
+
+    if (inputField.value.length === 0) {
+        cityName = 'Stockton';
+    } else {
+        cityName = inputField.value;
+    }
+
+    GetLatLong(cityName);
+})
+
 
 
 
