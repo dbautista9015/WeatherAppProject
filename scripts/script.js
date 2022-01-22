@@ -12,21 +12,25 @@ let button = document.getElementById('button-addon2');
 function GetLatLong(town) {
 
 
-   
-
-
-
-
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${town}&APPID=8903d3033bcdc5adc4484ce6f5201cfd`)
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) {
+            throw Error (alert('City Not Found'))
+        }
+        else {
+             //Display City Name
+        displayCity.textContent = town;
+        }
+        
+    })
     .then(data => {
         // console.log(`Latitude: ${data.city.coord.lat}`);
         // console.log(`Longtitude: ${data.city.coord.lon}`);
         // Latitude: 37.9577
         // Longtitude: -121.2908
 
-        //Display City Name
-        displayCity.textContent = town;
+        
+       
 
         
 
