@@ -9,6 +9,7 @@ export default function DataToWebsite(cityInfoArr) {
     let minMaxTemp = document.getElementsByClassName('minMaxTemp');
     let date = document.getElementsByClassName('date');
 
+
     for (let i = 0; i < cityInfoArr.length; i++) {
         day[i].textContent = cityInfoArr[i].day;
         //Will change weather Icon later
