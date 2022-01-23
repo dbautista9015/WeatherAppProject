@@ -1,5 +1,6 @@
 import DataToWebsite from "../scripts/DoNotKnow.js"
 
+
 let lat;
 let lon;
 let cityName;
@@ -34,7 +35,7 @@ function GetLatLong(town) {
         lat = data.city.coord.lat;
         lon = data.city.coord.lon;
 
-        GetWeatherData(lat, lon);
+        GetWeatherData(lat, lon, town);
 
 
         
@@ -42,7 +43,7 @@ function GetLatLong(town) {
 
 }
 
-function GetWeatherData(lattitude, longtitude) {
+function GetWeatherData(lattitude, longtitude, locationCity) {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lattitude}&lon=${longtitude}&exclude=hourly&appid=8903d3033bcdc5adc4484ce6f5201cfd`)
     .then(response => response.json())
     .then(dat => {
@@ -136,6 +137,7 @@ function GetWeatherData(lattitude, longtitude) {
         }
 
         DataToWebsite(cityInfoArray);
+        
         
         
     });
