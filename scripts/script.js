@@ -86,7 +86,8 @@ function GetWeatherData(lattitude, longtitude) {
                         humidity: dat.current.humidity,
                         windSpeed: Math.round(dat.current.wind_speed * 3.6),
                         day: dayDate,
-                        date: monthDayYearDate
+                        date: monthDayYearDate,
+                        weatherPic: dat.current.weather[0].icon
                     }
                 )
                 
@@ -124,7 +125,8 @@ function GetWeatherData(lattitude, longtitude) {
                         humidity: dat.daily[i].humidity,
                         windSpeed: Math.round(dat.daily[i].wind_speed * 3.6),
                         day: dayDate,
-                        date: monthDayYearDate
+                        date: monthDayYearDate,
+                        weatherPic: dat.daily[i].weather[0].icon
                     }
                 )
 

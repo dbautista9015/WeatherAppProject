@@ -9,10 +9,13 @@ export default function DataToWebsite(cityInfoArr) {
     let minMaxTemp = document.getElementsByClassName('minMaxTemp');
     let date = document.getElementsByClassName('date');
 
+    console.log(weatherIcon);
+
 
     for (let i = 0; i < cityInfoArr.length; i++) {
         day[i].textContent = cityInfoArr[i].day;
         //Will change weather Icon later
+        weatherIcon[i].src = `http://openweathermap.org/img/wn/${cityInfoArr[i].weatherPic}@4x.png`;
 
         nowTemp[i].textContent = cityInfoArr[i].currentTemp + '°C';
         humid[i].textContent = 'Humidity: ' + cityInfoArr[i].humidity + '%';
