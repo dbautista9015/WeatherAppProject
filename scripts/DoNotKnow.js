@@ -1,3 +1,6 @@
+import {SaveToLocalStorage, DeleteLocalStorage} from  "../scripts/localStorage.js";
+
+
 export default function DataToWebsite(cityInfoArr) {
 
     //Gets html elements
