@@ -1,5 +1,5 @@
 import DataToWebsite from "../scripts/DoNotKnow.js"
-import { SaveToLocalStorage } from "../scripts/localStorage.js";
+import { SaveToLocalStorage, RemoveFromLocalStorage, CheckLocalStorage } from "../scripts/localStorage.js";
 
 
 let lat;
@@ -11,6 +11,9 @@ let inputField = document.getElementById('inputField');
 let button = document.getElementById('button-addon2');
 
 let heartIcon = document.getElementById('heartIcon');
+
+let dropdown_menu = document.getElementsByClassName('dropdown-menu')[0];
+
 
 
 function GetLatLong(town) {
@@ -149,6 +152,8 @@ function GetWeatherData(lattitude, longtitude, nameOfCity) {
     });
 }
 
+
+
 button.addEventListener('click', function(e) {
 
     if (inputField.value.length === 0) {
@@ -156,17 +161,47 @@ button.addEventListener('click', function(e) {
     } else {
         cityName = inputField.value;
     }
-
+    heartIcon.className = 'far fa-heart fa-3x';
     GetLatLong(cityName);
 });
 
+
+
 heartIcon.addEventListener('click', function(e) {
+    
     if (heartIcon.className === 'far fa-heart fa-3x') {
         heartIcon.className = 'fas fa-heart fa-3x';
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.className = 'dropdown-item';
+        a.href = '#';
+        a.textContent = cityName;
+
+        dropdown_menu.appendChild(li);
+        li.appendChild(a);
     } else {
-        heartIcon.className = 'far fa-heart fa-3x'
+        heartIcon.className = 'far fa-heart fa-3x';
+        // dropdown_menu.removeChild(dropdown_menu.childNodes[]);
+
+        console.log(dropdown_menu.childNodes);
+        console.log(dropdown_menu.childNodes[1].childNodes[0].textContent);
+        console.log(cityName);
+
+        for (let i = 1, j = 0; i < dropdown_menu.childNodes.length; i++) {
+             if (dropdown_menu.childNodes[i].childNodes[j].textContent === cityName) {
+                 dropdown_menu.removeChild(dropdown_menu.childNodes[i]);
+                 break;
+             }
+        }
+
+
     }
 });
+
+
+
+
+
 
 
 

@@ -10,4 +10,12 @@ function RemoveFromLocalStorage() {
     localStorage.setItem('Favorites', JSON.stringify(favorites));
 }
 
-export {SaveToLocalStorage, RemoveFromLocalStorage}
+function CheckLocalStorage() {
+    const localStorageItem = localStorage.getItem('Favorites');
+    localStorageItem !== null ? favorites = JSON.parse(localStorageItem) : favorites = [];
+
+}
+
+
+
+export {SaveToLocalStorage, RemoveFromLocalStorage, CheckLocalStorage}
