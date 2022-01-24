@@ -15,16 +15,16 @@ export default function DataToWebsite(cityInfoArr) {
     console.log(weatherIcon);
 
 
-    for (let i = 0; i < cityInfoArr.length; i++) {
-        day[i].textContent = cityInfoArr[i].day;
+    for (let i = 0; i < cityInfoArr.information.length; i++) {
+        day[i].textContent = cityInfoArr.information[i].day;
         //Will change weather Icon later
-        weatherIcon[i].src = `http://openweathermap.org/img/wn/${cityInfoArr[i].weatherPic}@4x.png`;
+        weatherIcon[i].src = `http://openweathermap.org/img/wn/${cityInfoArr.information[i].weatherPic}@4x.png`;
 
-        nowTemp[i].textContent = cityInfoArr[i].currentTemp + '°C';
-        humid[i].textContent = 'Humidity: ' + cityInfoArr[i].humidity + '%';
-        wind[i].textContent = 'Wind: ' + cityInfoArr[i].windSpeed + 'km/h';
-        minMaxTemp[i].textContent = cityInfoArr[i].maxTemp + '°C' + ' - ' + cityInfoArr[i].minTemp + '°C'
-        date[i].textContent = cityInfoArr[i].date;
+        nowTemp[i].textContent = cityInfoArr.information[i].currentTemp + '°C';
+        humid[i].textContent = 'Humidity: ' + cityInfoArr.information[i].humidity + '%';
+        wind[i].textContent = 'Wind: ' + cityInfoArr.information[i].windSpeed + 'km/h';
+        minMaxTemp[i].textContent = cityInfoArr.information[i].maxTemp + '°C' + ' - ' + cityInfoArr.information[i].minTemp + '°C'
+        date[i].textContent = cityInfoArr.information[i].date;
     }
 
 
