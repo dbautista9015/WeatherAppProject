@@ -1,4 +1,4 @@
-import {SaveToLocalStorage, DeleteLocalStorage} from  "../scripts/localStorage.js";
+import {SaveToLocalStorage, RemoveFromLocalStorage} from  "../scripts/localStorage.js";
 
 
 export default function DataToWebsite(cityInfoArr) {
@@ -29,4 +29,6 @@ export default function DataToWebsite(cityInfoArr) {
 
 
 }
+
+
 

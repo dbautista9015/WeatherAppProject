@@ -5,9 +5,9 @@ function SaveToLocalStorage(cityName) {
     localStorage.setItem('Favorites', JSON.stringify(favorites));
 }
 
-function DeleteLocalStorage() {
+function RemoveFromLocalStorage() {
     favorites = [];
     localStorage.setItem('Favorites', JSON.stringify(favorites));
 }
 
-export {SaveToLocalStorage, DeleteLocalStorage}
+export {SaveToLocalStorage, RemoveFromLocalStorage}

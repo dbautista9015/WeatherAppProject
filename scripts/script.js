@@ -141,7 +141,7 @@ function GetWeatherData(lattitude, longtitude, nameOfCity) {
             console.log('');
 
         }
-        
+
         DataToWebsite(cityInfoArray);
         
         
@@ -159,7 +159,9 @@ button.addEventListener('click', function(e) {
     }
 
     GetLatLong(cityName);
-})
+});
+
+
 
 
 
