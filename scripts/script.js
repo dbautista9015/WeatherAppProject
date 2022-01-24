@@ -179,6 +179,9 @@ heartIcon.addEventListener('click', function(e) {
 
         dropdown_menu.appendChild(li);
         li.appendChild(a);
+
+        FavoritesListStuff();
+
     } else {
         heartIcon.className = 'far fa-heart fa-3x';
         // dropdown_menu.removeChild(dropdown_menu.childNodes[]);
@@ -197,6 +200,17 @@ heartIcon.addEventListener('click', function(e) {
 
     }
 });
+
+function FavoritesListStuff() {
+    for (let i = 1, j = 0; i < dropdown_menu.childNodes.length; i++) {
+        dropdown_menu.childNodes[i].childNodes[j].addEventListener('click', function(e) {
+            GetLatLong(dropdown_menu.childNodes[i].childNodes[j].textContent);
+        })
+    }
+}
+
+
+
 
 
 
