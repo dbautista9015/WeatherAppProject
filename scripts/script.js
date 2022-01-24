@@ -146,9 +146,6 @@ function GetWeatherData(lattitude, longtitude, nameOfCity) {
 
         DataToWebsite(cityInfoArray);
         
-        
-        
-        
     });
 }
 
