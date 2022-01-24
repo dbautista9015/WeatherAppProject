@@ -10,6 +10,8 @@ let displayCity = document.getElementById('displayCity');
 let inputField = document.getElementById('inputField');
 let button = document.getElementById('button-addon2');
 
+let heartIcon = document.getElementById('heartIcon');
+
 
 function GetLatLong(town) {
 
@@ -159,6 +161,14 @@ button.addEventListener('click', function(e) {
     }
 
     GetLatLong(cityName);
+});
+
+heartIcon.addEventListener('click', function(e) {
+    if (heartIcon.className === 'far fa-heart fa-3x') {
+        heartIcon.className = 'fas fa-heart fa-3x';
+    } else {
+        heartIcon.className = 'far fa-heart fa-3x'
+    }
 });
 
 
