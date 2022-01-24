@@ -1,4 +1,5 @@
 import DataToWebsite from "../scripts/DoNotKnow.js"
+import { SaveToLocalStorage } from "../scripts/localStorage.js";
 
 
 let lat;
@@ -20,9 +21,10 @@ function GetLatLong(town) {
             throw Error (alert('City Not Found'))
         }
         else {
-             //Display City Name
-        displayCity.textContent = town;
-        return res.json();
+            //Display City Name
+            displayCity.textContent = town;
+            
+            return res.json();
         }
         
     })
@@ -34,6 +36,7 @@ function GetLatLong(town) {
 
         lat = data.city.coord.lat;
         lon = data.city.coord.lon;
+        town = data.city.name
 
         GetWeatherData(lat, lon, town);
 
@@ -43,14 +46,15 @@ function GetLatLong(town) {
 
 }
 
-function GetWeatherData(lattitude, longtitude, locationCity) {
+function GetWeatherData(lattitude, longtitude, nameOfCity) {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lattitude}&lon=${longtitude}&exclude=hourly&appid=8903d3033bcdc5adc4484ce6f5201cfd`)
     .then(response => response.json())
     .then(dat => {
         
-        const cityInfoArray = [
-            
-        ]
+        const cityInfoArray = {
+            information: [],
+            cityName: nameOfCity
+        };
         
 
         for (let i = 0; i < 6; i++) {
@@ -68,6 +72,8 @@ function GetWeatherData(lattitude, longtitude, locationCity) {
                 let currentTempMin = Math.round(dat.daily[0].temp.min - 273);
                 let currentTempMax = Math.round(dat.daily[0].temp.max - 273);
 
+                
+
                 // console.log(`Current Temperature: ${currentTemp}° C`);
                 // console.log(`Temperature Min: ${currentTempMin}° C`);
                 // console.log(`Temperature Max: ${currentTempMax}° C`);
@@ -78,7 +84,7 @@ function GetWeatherData(lattitude, longtitude, locationCity) {
                 // console.log(`Date: ${monthDayYearDate}`);
 
                 //Adds current day info from api into object
-                cityInfoArray.push(
+                cityInfoArray.information.push(
                     {
                         currentTemp: currentTemp,
                         minTemp: currentTempMin,
@@ -117,7 +123,7 @@ function GetWeatherData(lattitude, longtitude, locationCity) {
 
 
                 //Adds Api information to object
-                cityInfoArray.push(
+                cityInfoArray.information.push(
                     {
                         currentTemp: temp,
                         minTemp: tempMin,
@@ -135,8 +141,9 @@ function GetWeatherData(lattitude, longtitude, locationCity) {
             console.log('');
 
         }
-
+        
         DataToWebsite(cityInfoArray);
+        
         
         
         
